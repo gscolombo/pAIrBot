@@ -5,11 +5,12 @@ load_dotenv()
 
 SYSTEM_PROMPT = open("system_prompt.md", "r").read()
 
-client = genai.Client()
+client = genai.Client() # Instancia cliente com a chave de API (GOOGLE_API_KEY) nas variáveis de ambiente
 
+# Configura uma conversa com acompanhamento de histórico (multi-turn)
 chat = client.chats.create(model="gemini-3.1-flash-lite",
                            config=genai.types.GenerateContentConfig(
-                               system_instruction=SYSTEM_PROMPT
+                               system_instruction=SYSTEM_PROMPT # Inclui system prompt para configurar o agente
                            ))
 
 print("Conversa iniciada. Digite \"sair\" para encerrar o programa.")
